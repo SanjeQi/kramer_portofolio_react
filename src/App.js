@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import Projects from './Projects';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = { displayBio: false };
-    this.toggleDisplayBio = this.toggleDisplayBio.bind(this);
-  }
+  // constructor() {
+  //   super();
+  //   this.state = { displayBio: false };
+  //   this.toggleDisplayBio = this.toggleDisplayBio.bind(this);
+  // }
+  state = { displayBio: false };
 
-  toggleDisplayBio() {
+  toggleDisplayBio = () => {
     this.setState({ displayBio: !this.state.displayBio });
     console.log(this.state);
-  }
+  };
   render() {
     return (
       <div>
@@ -30,6 +32,8 @@ class App extends Component {
             <button onClick={this.toggleDisplayBio}>Read More</button>
           </div>
         )}
+        <hr />
+        <Projects />
       </div>
     );
   }
