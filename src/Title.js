@@ -11,7 +11,7 @@ class Title extends Component {
   state = { titleIndex: 0 };
 
   componentDidMount() {
-    console.log('Tile Component was loaded');
+    console.log('The Title Component has been loaded successfully');
     this.animateTitles();
   }
 
