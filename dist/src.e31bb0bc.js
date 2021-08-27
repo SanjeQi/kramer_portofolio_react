@@ -29930,13 +29930,13 @@ var Title = /*#__PURE__*/function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "animateTitles", function () {
-      setInterval(function () {
+      _this.titleInterval = setInterval(function () {
         var titleIndex = (_this.state.titleIndex + 1) % TITLES.length;
 
         _this.setState({
           titleIndex: titleIndex
         });
-      }, 2000);
+      }, 1500);
     });
 
     return _this;
@@ -29945,8 +29945,12 @@ var Title = /*#__PURE__*/function (_Component) {
   _createClass(Title, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('The Title Component has been loaded successfully');
       this.animateTitles();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearInterval(this.titleInterval);
     }
   }, {
     key: "render",
@@ -30176,7 +30180,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38531" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34069" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
