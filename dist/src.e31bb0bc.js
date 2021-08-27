@@ -29926,7 +29926,8 @@ var Title = /*#__PURE__*/function (_Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      titleIndex: 0
+      titleIndex: 0,
+      fadeIn: true
     });
 
     _defineProperty(_assertThisInitialized(_this), "animateTitles", function () {
@@ -29934,9 +29935,16 @@ var Title = /*#__PURE__*/function (_Component) {
         var titleIndex = (_this.state.titleIndex + 1) % TITLES.length;
 
         _this.setState({
-          titleIndex: titleIndex
+          titleIndex: titleIndex,
+          fadeIn: true
         });
-      }, 1500);
+
+        _this.timeout = setTimeout(function () {
+          _this.setState({
+            fadeIn: false
+          });
+        }, 2000);
+      }, 4000);
     });
 
     return _this;
@@ -29945,18 +29953,31 @@ var Title = /*#__PURE__*/function (_Component) {
   _createClass(Title, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
+      this.timeout = setTimeout(function () {
+        _this2.setState({
+          fadeIn: false
+        });
+      }, 2000);
       this.animateTitles();
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       clearInterval(this.titleInterval);
+      clearTimeout(this.timeout);
     }
   }, {
     key: "render",
     value: function render() {
-      var title = TITLES[this.state.titleIndex];
-      return /*#__PURE__*/_react.default.createElement("p", null, "I am ", title);
+      var _this$state = this.state,
+          fadeIn = _this$state.fadeIn,
+          titleIndex = _this$state.titleIndex;
+      var title = TITLES[titleIndex];
+      return /*#__PURE__*/_react.default.createElement("p", {
+        className: fadeIn ? 'title-fade-in' : 'title-fade-out'
+      }, "I am ", title);
     }
   }]);
 
@@ -30180,7 +30201,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34069" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33727" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
