@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
 import Title from './Title';
-import kramer from './assets/kramer.png';
+import kramer from '../assets/kramer.png';
 
 class App extends Component {
   // constructor() {
