@@ -29921,7 +29921,18 @@ var Jokes = /*#__PURE__*/function (_Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      joke: {}
+      joke: {},
+      jokes: []
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "fetchJokes", function () {
+      fetch('https://official-joke-api.appspot.com/random_ten').then(function (res) {
+        return res.json();
+      }).then(function (jokes) {
+        return _this.setState({
+          jokes: jokes
+        });
+      });
     });
 
     return _this;
@@ -29932,11 +29943,11 @@ var Jokes = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch('https://official-joke-api.appspot.com/random_joke').then(function (response) {
-        return response.json();
-      }).then(function (json) {
+      fetch('https://official-joke-api.appspot.com/random_joke').then(function (res) {
+        return res.json();
+      }).then(function (joke) {
         return _this2.setState({
-          joke: json
+          joke: joke
         });
       });
     }
@@ -29946,7 +29957,16 @@ var Jokes = /*#__PURE__*/function (_Component) {
       var _this$state$joke = this.state.joke,
           setup = _this$state$joke.setup,
           punchline = _this$state$joke.punchline;
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Joke of the day:"), /*#__PURE__*/_react.default.createElement("p", null, setup, " ", /*#__PURE__*/_react.default.createElement("em", null, punchline)));
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Joke of the day"), /*#__PURE__*/_react.default.createElement("p", null, setup, " ", /*#__PURE__*/_react.default.createElement("em", null, punchline)), /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement("h3", null, "Get 10 more !?"), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: this.fetchJokes
+      }, "Jokes"), this.state.jokes.map(function (joke) {
+        var id = joke.id,
+            setup = joke.setup,
+            punchline = joke.punchline;
+        return /*#__PURE__*/_react.default.createElement("p", {
+          key: id
+        }, setup, " ", /*#__PURE__*/_react.default.createElement("em", null, punchline));
+      }));
     }
   }]);
 
@@ -30172,7 +30192,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34209" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33235" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
