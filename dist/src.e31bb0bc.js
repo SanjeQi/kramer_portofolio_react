@@ -29943,6 +29943,8 @@ var Jokes = /*#__PURE__*/function (_Component) {
         return _this.setState({
           jokes: jokes
         });
+      }).catch(function (error) {
+        return alert(error.message);
       });
     });
 
@@ -29960,6 +29962,8 @@ var Jokes = /*#__PURE__*/function (_Component) {
         return _this2.setState({
           joke: joke
         });
+      }).catch(function (error) {
+        return alert(error.message);
       });
     }
   }, {
@@ -30172,6 +30176,18 @@ require("./index.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
+
+new Promise(function (resolve, reject) {
+  return reject(new Error('No Bears'));
+  setInterval(function () {
+    console.log('Bears');
+    resolve('Bears, Beets, Battlestar Galactica');
+  }, 2000);
+}).then(function (quote) {
+  console.log(quote);
+}).catch(function (error) {
+  return console.log('error', error);
+});
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/App":"components/App.js","./index.css":"index.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -30200,7 +30216,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33713" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43579" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

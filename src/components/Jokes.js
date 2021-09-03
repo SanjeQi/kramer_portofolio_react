@@ -12,13 +12,15 @@ class Jokes extends Component {
   componentDidMount() {
     fetch('https://official-joke-api.appspot.com/random_joke')
       .then((res) => res.json())
-      .then((joke) => this.setState({ joke }));
+      .then((joke) => this.setState({ joke }))
+      .catch((error) => alert(error.message));
   }
 
   fetchJokes = () => {
     fetch('https://official-joke-api.appspot.com/random_ten')
       .then((res) => res.json())
-      .then((jokes) => this.setState({ jokes }));
+      .then((jokes) => this.setState({ jokes }))
+      .catch((error) => alert(error.message));
   };
 
   render() {
