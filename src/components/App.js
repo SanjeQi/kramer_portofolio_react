@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
 import Title from './Title';
+import Header from './Header';
 import kramer from '../assets/kramer.png';
 
 class App extends Component {
@@ -17,8 +18,11 @@ class App extends Component {
     console.log(this.state);
   };
   render() {
+    console.log('just rendered');
     return (
       <div>
+        <Header />
+        <hr />
         <img src={kramer} alt="portfolio" className="profile" />
         <h1>Hello!</h1>
         <p>My name is Kramer.I'm always around Jerry's apartment</p>

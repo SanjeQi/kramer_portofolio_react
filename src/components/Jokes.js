@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header';
 
 const Joke = ({ joke: { setup, punchline } }) => (
   <p style={{ margin: 20 }}>
@@ -26,6 +27,7 @@ class Jokes extends Component {
   render() {
     return (
       <div>
+        <Header />
         <h3>Random Joke of the day:</h3>
         <Joke joke={this.state.joke} />
         <hr />
