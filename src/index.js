@@ -1,18 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Switch, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import App from './components/App';
 import Jokes from './components/Jokes';
 import './index.css';
 
-const history = createBrowserHistory();
-
 ReactDOM.render(
-  <Router history={history}>
+  <Router history={createBrowserHistory()}>
     <Switch>
-      <Route exact={true} path="/" component={App}></Route>
-      <Route path="/jokes" component={Jokes}></Route>
+      <Route exact path="/" component={App} />
+      <Route path="/jokes" component={Jokes} />
     </Switch>
   </Router>,
   document.getElementById('root')
