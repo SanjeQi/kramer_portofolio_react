@@ -17,7 +17,6 @@ class App extends Component {
     console.log(this.state);
   };
   render() {
-    console.log('just rendered');
     return (
       <div>
         <hr />
